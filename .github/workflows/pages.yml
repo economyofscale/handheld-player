@@ -1,0 +1,38 @@
+# Publishes the player as a web page on GitHub Pages, so the README can link to
+# a live copy. In the repository settings, set Pages > Source to "GitHub Actions".
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect the site (only what the pages load)
+        run: |
+          mkdir _site
+          cp index.html mobile.html style.css mobile.css handheld.js ui.js ui-mobile.js three.min.js sw.js manifest.webmanifest _site/
+          cp -r game icons _site/
+          find _site -name '*.gb' -o -name '*.gbc' | xargs -r rm -f
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4

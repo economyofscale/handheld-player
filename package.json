@@ -1,0 +1,21 @@
+{
+  "name": "handheld-player",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "3D handheld game player - web, Android and iOS (Capacitor)",
+  "scripts": {
+    "serve": "npx serve .",
+    "build": "node scripts/copy-web.js",
+    "android": "npm run build && npx cap sync android && npx cap open android",
+    "ios": "npm run build && npx cap sync ios && npx cap open ios"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/ios": "^7.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.0.0"
+  }
+}
