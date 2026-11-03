@@ -29,6 +29,17 @@ A 3D handheld console in your browser, with a built-in Game Boy emulator. Spin i
 
 You can also click the buttons on the device or in the side panel. Drag to rotate the device, scroll to zoom. On a phone the touch version opens automatically (add `?desktop` to the address to stay on the desktop page).
 
+### Free view: turn the device while you play
+
+![Playing the demo game in free view, with the device turned to one side](docs/preview-freeview.png)
+
+When you power on, the device turns to face you and stays locked to the front, so dragging over the screen can't knock it sideways mid-game. Click **Free view** at the bottom of the side panel to unlock it:
+
+- **Drag** anywhere on the stage to turn the device in any direction. If you let go while still moving, it keeps spinning briefly and slows to a stop.
+- **Scroll** to zoom in or out (pinch on a phone).
+- **The game keeps running.** The LCD is part of the 3D model, so the picture stays on the screen at every angle, with the LCD effect, and the keys and buttons still work. In the screenshot the player is still running right; the side panel shows the held key.
+- Click **Front view** to bring the device back to the front at playing zoom, locked again. **POWER OFF** also ends free view.
+
 ## Run it yourself
 
 No build step and no dependencies. The emulator loads as ES modules, so serve the folder over http instead of opening `index.html` from disk.
